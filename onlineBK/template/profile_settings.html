@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Bank - Profile Settings</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      header {
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding: 20px;
+      }
+      h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="email"],
+      select {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+      }
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      select:focus {
+        border-color: #007bff;
+      }
+      button[type="submit"] {
+        padding: 12px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      form input{
+        padding: 6px;
+        margin: 4px;
+        width: 90%;
+      }
+      form button{
+        margin: 4px;
+        background-color:green;
+        padding:10px;
+        outline:none;
+        width:92%;
+        border: none;
+      }
+      form label{
+        padding: 5px;
+        font-size: 16px
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Online Bank</h1>
+    </header>
+
+    <div class="container">
+      <h2>Profile Settings</h2>
+      <div>
+        <div class="form-group">
+          <label for="address">Account Number:</label>
+          <br>
+          <span>{{user.account}}</span>
+        </div>
+        <div class="form-group">
+          <label for="fullName">Full Name:</label>
+          <br>
+          <span>{{user.username}}</span>
+        </div>
+        <div class="form-group">
+          <label for="fullName">Gender:</label>
+          <br>
+          <span>{{user.gender}}</span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <br>
+          <span>{{user.email}}</span>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <br>
+          <span>{{user.number}}</span>
+        </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <br>
+          <span>{{user.address}}</span>
+        </div>
+        <div class="form-group">
+          <label for="address">Account Type:</label>
+          <br>
+          <span>{{user.type}}</span>
+        </div>
+        <div class="form-group">
+          <label>Fund Pin:</label>
+          <br>
+          <span>{{user.fund}}</span>
+        </div>
+      </div>
+      <div>
+        <h2>Set Fund Pin</h2>
+        <div>
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+              <label>Create Fund Pin</label><br>
+              <input type="number" placeholder="Enter four digit code" name="pin1">
+            </div>
+            <div>
+              <label>Confirm Pint</label><br>
+              <input type="number" placeholder="confirm" name="pin1">
+            </div>
+            <button>
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

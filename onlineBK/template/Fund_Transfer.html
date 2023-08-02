@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Bank - Fund Transfer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #f5f5f5;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding: 20px;
+      }
+      h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="number"],
+      select {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      button[type="submit"] {
+        padding: 10px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Online Bank</h1>
+    </header>
+
+    <div class="container">
+      <h2>Fund Transfer</h2>{{user.username}}
+      <form id="fundTransferForm" method="GET"
+            enctype="multipart/form-data"
+        action="{% url 'info' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="fromAccount">From Account:</label>
+          <select id="fromAccount" name="fromAccount" required>
+            <option value="savings">Savings Account</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="toAccount">To Account:</label>
+          <input type="number" id="toAccount" name="account" placeholder="Enter account number" required />
+        </div>
+        <div class="form-group">
+          <label for="amount">Bank Name:</label>
+          <input type="text" id="amount" name="bank" placeholder="Enter bank name" />
+        </div>
+        <div class="form-group">
+            <p>
+                Enter amount to transfer
+            </p>
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" name="amount" placeholder="Enter Amount" required />
+        </div>
+        <div class="form-group">
+          <label for="amount">Pin:</label>
+          <input type="number" id="amount" name="pin" placeholder="Enter Pin" required />
+        </div>
+        <button type="submit">Transfer</button>
+      </form>
+    </div>
+  </body>
+</html>

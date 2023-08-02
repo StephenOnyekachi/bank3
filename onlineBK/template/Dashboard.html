@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Bank - Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .container {
+        display: flex;
+        max-width: 1200px;
+        margin: 20px auto;
+        background-color: #f5f5f5;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+      .menu-bar {
+        flex-basis: 200px;
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+      }
+      .menu-bar h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .menu-item {
+        padding: 10px;
+        text-align: center;
+        transition: background-color 0.3s;
+      }
+      .menu-item:last-child {
+        border-bottom: none;
+      }
+      .menu-item a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .menu-item a:hover {
+        text-decoration: underline;
+      }
+      .content {
+        flex-grow: 1;
+        padding: 20px;
+      }
+      h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .account {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+      }
+      .account h3 {
+        margin-top: 0;
+        color: #007bff;
+      }
+      .transaction {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+      .transaction h4 {
+        margin-top: 0;
+        color: #007bff;
+      }
+      .notification-button {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        padding: 10px;
+        font-size: 16px;
+        background-color: #fff;
+        color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Online Bank</h1>
+      <button class="notification-button" onclick="showNotifications()">
+        Notifications
+      </button>
+    </header>
+
+    <div class="container">
+      <div class="menu-bar">
+        <h2>Menu</h2>
+        <div class="menu-item">
+          <a href="{% url 'dashbord' %}">Dashboard</a>
+        </div>
+        <div class="menu-item">
+          <a href="{% url 'profile' %}">Account Details</a>
+        </div>
+        <div class="menu-item">
+          <a href="{% url 'transfer' %}">Fund Transfer</a>
+        </div>
+        <div class="menu-item">
+          <a href="{% url 'profile_settings' %}">Profile Settings</a>
+        </div>
+        <div class="menu-item">
+          <a href="{% url 'user_logout' %}">log out</a>
+        </div>
+        <!-- Add more menu items as needed -->
+      </div>
+
+      <div class="content">
+        <h2>Welcome to Your Dashboard {{request.user}}</h2>
+
+<!--        <div class="account">-->
+<!--          <h3>Checking Account</h3>-->
+<!--          <p>Account Number: {{user.account}}</p>-->
+<!--          <p>Balance: ${{user.balance}}.00</p>-->
+<!--        </div>-->
+
+        <div class="account">
+          <h3>Savings Account</h3>
+          <p>Account Number: {{user.account}}</p>
+          <p>Balance: ${{user.balance}}.00</p>
+        </div>
+
+        <h2>Recent Transactions</h2>
+        <div class="transaction">
+          <h4>Date: 2023-07-20</h4>
+          <p>Description: Grocery Shopping</p>
+          <p>Amount: -$150.00</p>
+          <p>Account: Checking Account</p>
+        </div>
+
+        <div class="transaction">
+          <h4>Date: 2023-07-19</h4>
+          <p>Description: Salary Deposit</p>
+          <p>Amount: $2,000.00</p>
+          <p>Account: Savings Account</p>
+        </div>
+
+        <div class="transaction">
+          <h4>Date: 2023-07-18</h4>
+          <p>Description: Phone Bill Payment</p>
+          <p>Amount: -$50.00</p>
+          <p>Account: Checking Account</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      function showNotifications() {
+        // Implement your notification logic here
+        // For demonstration purposes, we'll show an alert
+        alert("You have new notifications!");
+      }
+    </script>
+  </body>
+</html>

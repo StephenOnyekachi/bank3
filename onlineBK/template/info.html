@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Bank - Fund Transfer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #f5f5f5;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding: 20px;
+      }
+      h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="number"],
+      select {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      button[type="submit"] {
+        padding: 10px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      .border{
+        display: flax;
+        margin: 10px;
+        text-align: center;
+        font-size: 20px;
+      }
+      .border span{
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Online Bank</h1>
+    </header>
+
+    <div class="container">
+      {% if receiver %}
+        {% for receiver in receiver %}
+            <div class="col-md-12 bg-primary primary">
+                <div class="col-md-6">
+                    <div class="col-md-12 border">
+                        <h3 class="text-danger">
+                            Receiver Info
+                        </h3>
+                    </div>
+                    <div class="col-md-12 border">
+                        <span class="">{{sender.username}}</span>
+                        <label>you transfer {{amount}} to </label>
+                    </div>
+                    <div class="col-md-12 border">
+                        <label>Receiver Name:</label>
+                        <span class="">{{receiver.username}}</span>
+                    </div>
+                    <div class="col-md-12 border">
+                        <label>Receiver Account Number:</label>
+                        <span class="">{{receiver.account}}</span>
+                    </div>
+                    <div class="col-md-12 border">
+                        <label>Receiver Balance:</label>
+                        <span class="">{{receiver.balance}}</span>
+                        <span class="">{{total.total}}</span>
+                    </div>
+                </div>
+             </div>
+        {% endfor %}
+        {% else %}
+            <div class="col-md-12 goods">
+                <div>
+                    <h3>
+                        Account not found please check the account number and try again
+                    </h3>
+                </div>
+            </div>
+        {% endif %}
+      <h2>Fund Transfer</h2>
+    </div>
+  </body>
+</html>
