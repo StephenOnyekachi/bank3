@@ -22,6 +22,7 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('profile_settings/', views.profile_settings, name='profile_settings'),
     path('transfer/', views.transfer, name='transfer'),
+    path('send-funds/', views.send_funds, name="send-funds")
 
     # path('varify/<int:pk>/', views.varify, name='varify'),
 ]
