@@ -189,29 +189,39 @@ def transfer(request):
     return render(request, 'Fund_Transfer.html', context)
 
 def info(request):
-    sender = Users.objects.get(username=request.user)
+    context = {}
     if request.method == 'GET':
+        sender = Users.objects.get(username=request.user)
         search = request.GET.get('account')
-        receiver = Users.objects.all().filter(account=search)
-
+        receiver = Users.objects.get(account=search)
         amount = request.GET['amount']
-        pin = request.GET['pin']
 
-        if pin == sender.fund:
-            if sender.balance < amount:
-                messages.info(request, 'insufficient balance try again')
-                return redirect(request, 'transfer')
-            else:
-                int(receiver.balance) + int(amount)
-                current_balance = int(sender.balance) - int(amount)
-                current_balance.save()
-        # total = int(user.balance) + int(200)
-    context = {
-        'receiver': receiver,
-        'sender': sender,
-        'amount': amount,
-    }
+        context = {
+            'receiver': receiver,
+            'sender': sender,
+            'amount': amount,
+        }
     return render(request, 'info.html', context)
+
+
+def send_funds(request):
+    if request.method == 'POST':
+        search = request.POST.get('search')
+        print(search)
+        amount = request.POST['amount']
+        receiver = Users.objects.get(account=search)
+        sender = request.user
+        if sender.balance < int(amount):
+            messages.info(request, 'insufficient balance try again')
+            return redirect('transfer')
+        else:
+            receiver.balance += int(amount)
+            receiver.save()
+            sender.balance -= int(amount)
+            sender.save()
+            messages.info(request, 'success')
+            return redirect('dashbord')
+    
 
 # def funds(request):
 #     # receiver = Users.objects.get(id=pk)
