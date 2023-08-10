@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
+    crossorigin="anonymous">
+    <!-- </script> -->
+    <link rel="stylesheet" href="{% static 'static/bootstrap/css/bootstrap.min.css' %}">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="{% static 'static/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css.css' %}">
+
+   <title>dashbord</title>
+    <style>
+      a{
+        transition: all 1.2s ease;
+      }
+      a:hover{
+        text-decoration: none;
+        transform: scale(1.5);
+        background-color: rgb(206, 234, 255);
+      }
+      i{
+        padding: 10px;
+        border-radius: 50%;
+        background-color: rgba(0, 255, 255, 0.363);
+      }
+      .block{
+    z-index: 100;
+    position: fixed;
+    background-color: #080808e5;
+    width: 100%;
+    padding: 30px;
+    height: 100vh;
+  }
+  .block-info{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+  .block-infos{
+    border: 1px solid white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 200px;
+  }
+  .block-infos a{
+    color: white;
+    padding: 10px;
+  }
+
+    </style>
+  </head>
+  <body>
+
+    {% if user.block %}
+    <div class="block">
+      <div class="block-info">
+        <div class="block-infos">
+          <h1>
+            This Account Is Block
+          </h1>
+          <p>
+            Contact Admin For More Information
+          </p>
+          <div>
+            <a href="{% url 'user_logout' %}">Log Out</a>
+          </div>
+          <div>
+            <a href="{% url 'home' %}"> Contact Admin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="container-fluid">
+      <div class="col-md-12 p-3 mb-2">
+        <div class="col-md-12 bg-dark bg-gradient">
+          <div class="col-md-12 p-4">
+            <div class="col-md-6">
+              <h3 class="text-light text-left">
+                Welcome Back
+              </h3>
+            </div>
+            <div class="col-md-6">
+              <h3 class="text-light text-left">
+                <span class="fa fa-user text-right text-light"> {{request.user}}</span>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 p-4 mb-4">
+          <div class="col-md-4">
+            <div class="bg-light p-4 mb-4 bg-gradient">
+              <a href="{% url 'dashbord' %}">
+                <div class="mb-4b p-4">
+                  <i class="fa fa-dollar text-center fa-3x p-3 mb-2"></i>
+                  <p class="p-3 mb-2">$ {{user.balance}} .00</p>
+                  <h4 class="text-muted p-3 mb-2">Balance</h4>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="bg-light p-4 mb-4 bg-gradient">
+              <a href="{% url 'transfer' %}">
+                <div class="mb-4b p-4">
+                  <i class="fa fa-arrows-h text-center fa-3x p-3 mb-2"></i>
+                  <p class="p-3 mb-2 text-info">Make payments from Here</p>
+                  <h4 class="text-muted p-3 mb-2">Transfer To Others</h4>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="bg-light p-4 mb-4 bg-gradient">
+              <a href="{% url 'profile' %}">
+                <div class="mb-4b p-4">
+                  <i class="fa fa-user-o text-center fa-3x p-3 mb-2"></i>
+                  <p class="p-3 mb-2 text-secondary">See your informations Here</p>
+                  <h4 class="text-muted p-3 mb-2">Account</h4>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="bg-light p-4 mb-4 bg-gradient">
+              <a href="{% url 'profile_settings' %}">
+                <div class="mb-4b p-4">
+                  <i class="fa fa-cogs text-center fa-3x p-3 mb-2"></i>
+                  <p class="p-3 mb-2 text-primary">Update your informations Here</p>
+                  <h4 class="text-muted p-3 mb-2">Settings</h4>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="bg-light p-4 mb-4 bg-gradient">
+              <a href="{% url 'history' %}">
+                <div class="mb-4b p-4">
+                  <i class="fa fa-cubes text-center fa-3x p-3 mb-2"></i>
+                  <p class="p-3 mb-2 text-success">See all your Transactions Here</p>
+                  <h4 class="text-muted p-3 mb-2">History</h4>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="bg-light p-4 mb-4 bg-gradient">
+              <a href="{% url 'user_logout' %}">
+                <div class="mb-4b p-4">
+                  <i class="fa fa-power-off text-center fa-3x p-3 mb-2"></i>
+                  <p class="p-3 mb-2 text-warning">Log out from your Account</p>
+                  <h4 class="text-muted p-3 mb-2">Log Out</h4>
+                </div>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script type="module" src="{% static 'js.js' %}"></script>
+<script>
+    let bars = document.querySelector('.bar')
+    let menus = document.querySelector('.menu-bg')
+    // bars.style.display = 'block';
+    bars.addEventListener("click", e =>{
+        console.log("me")
+
+        if(menus.style.display === "none"){
+            menus.style.display = "block";
+            console.log("me")
+        }
+        else{
+            menus.style.display = "none";
+        }
+    })
+</script>
+
+</html>
+

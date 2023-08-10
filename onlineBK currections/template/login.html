@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
+    crossorigin="anonymous">
+    <!-- </script> -->
+    <link rel="stylesheet" href="{% static 'static/bootstrap/css/bootstrap.min.css' %}">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="{% static 'static/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css.css' %}">
+
+   <title>Login</title>
+    <style>
+      swiper-slide{
+        height: 300px;
+        width: 300px;
+      }
+      swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <div class="col-md-12 p-3 mb-2">
+        <div class="col-md-12 bg-dark bg-gradient">
+          <div class="col-md-6 p-3 mb-2">
+            <h1 class="text-light text-center p-3 mb-2">Log In</h1>
+            <p class="text-center text-light">
+              Log In to you Account Here
+            </p>
+            <div class="col-md-12 p-4 mb-4">
+              {% for message in messages %}
+              <h4 class="bg-warning text-danger p-4 mb-4 text-center">
+                <i class="fa fa-lock fa-x3 text-danger p-4 text-center bg-secondary bg-gradient"></i>
+                {{message.message}}
+              </h4>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-md-6 bg-light">
+            <div class="col-md-12">
+              <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-md-12 p-3 mb-3">
+                  <p class="text-muted">
+                    <i class="fa fa-user text-right p-3"></i>
+                    User Name:
+                  </p>
+                  <input type="text" placeholder="User Name" name="name" class="form-control">
+                </div>
+                <div class="col-md-12 p-3 mb-3">
+                  <p class="text-muted">
+                    <i class="fa fa-eye text-right p-3"></i>
+                    Password:
+                  </p>
+                  <input type="password" placeholder="User Password" name="password" class="form-control">
+                </div>
+                <div class="col-md-12 p-3 mb-3">
+                  <button class="btn btn-primary">Log In</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 p-3 mb-2 bg-gradient bg-dark">
+      <footer id="footer">
+        <div class="container">
+          <div class="footer-inner">
+            <div class="footer-top">
+              <div class="subscribe-form-area">
+                <div class="row">
+                  <div class="col-md-8 text-light">
+                      <h3>Don’t miss to subscribe to our <strong>Newsletter,</strong> kindly fill the form</h3>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="footer-widget-area">
+                <div class="row">
+                  <div class="col-md-3">
+                      <div class="footer-widget">
+                        <div class="about-widget text-light">
+                          <img src="{% static 'static/img/logo-2.png' %}" alt="img" class="img-responsive">
+                          <p class="mb-3 p-3">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Phasellus id lectus quis dui euismod consectetur.
+                            Pellentesque ac ante sollicitudin, tincidunt nulla in, 
+                            Lorem ipsum dolor sit amet
+                          </p>
+                          <ul class="social-icon">
+                              <li class="fa fa-facebook"></li>
+                              <li class="fa fa-twitter"></li>
+                              <li class="fa fa-google-plus"></li>
+                              <li class="fa fa-pinterest-p"></li>
+                          </ul>
+                        </div>
+                      </div>
+                  </div>
+                    <div class="col-md-3 col-sm-6">
+                      <div class="footer-widget">
+                          <div class="wp-custom-nav">
+                            <div class="widget-title text-light mb-4">
+                                <h4>Usefull Links</h4>
+                            </div>
+                            <ul class="text-light mb-4">
+                              <li><a href="#" class="text-light mb-4">About Us</a></li>
+                              <li><a href="#" class="text-light mb-4">Latest News</a></li>
+                              <li><a href="#" class="text-light mb-4">Our Service</a></li>
+                              <li><a href="#" class="text-light mb-4">Portfolio</a></li>
+                              <li><a href="#" class="text-light mb-4">Career </a></li>
+                              <li><a href="#" class="text-light mb-4">Company</a></li>
+                              <li><a href="#" class="text-light mb-4">Testimonials</a></li>
+                              <li><a href="#" class="text-light mb-4">Contact Us</a></li>
+                              <li><a href="#" class="text-light mb-4">Our team</a></li>
+                              <li><a href="#" class="text-light mb-4">FAQ</a></li>
+                            </ul>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-widget text-light mb-4">
+                          <div class="finsult-recent-post">
+                            <div class="widget-title">
+                              <h4>Recent Post</h4>
+                            </div>
+                              <div class="recent-post-content">
+                                <div class="post-entry text-light mb-4">
+                                  <h5>
+                                    <a href="#" class="text-light mb-4">Contrary to popular belief, Lorem Ipsum is not simply</a>
+                                  </h5>
+                                  <span class="date"><i class="fa fa-clock-o"></i> January 16, 2016</span>
+                                </div>
+                                <div class="post-entry last text-light mb-4">
+                                  <h5>
+                                    <a href="#" class="text-light mb-4">Contrary to popular belief, Lorem Ipsum is not simply</a>
+                                  </h5>
+                                  <span class="date"><i class="fa fa-clock-o"></i> January 16, 2016</span>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                      <div class="footer-widget text-light mb-4">
+                        <div class="finsult-address-widget">
+                          <div class="widget-title">
+                            <h4>Head Office</h4>
+                          </div>
+                          <div class="finsult-address">
+                            <div class="address-block">
+                              <i class="fa fa-map-marker"></i>
+                              <span>
+                                  322 Jaintfam St, Brookfields <br>
+                                  NY 245 United States
+                              </span>
+                              <div class="clearfix"></div>
+                            </div>
+                            <div class="address-block">
+                              <i class="fa fa-phone"></i>
+                              <span>
+                                  +88 012 012 012458
+                              </span>
+                              <div class="clearfix"></div>
+                            </div>
+                            <div class="address-block">
+                              <i class="fa fa-envelope-open"></i>
+                              <span>
+                                  support@yourmail.com
+                              </span>
+                              <div class="clearfix"></div>
+                            </div>
+                            <div class="address-block last">
+                              <i class="fa fa-clock-o"></i>
+                              <span>
+                                Mon - Sat 8.00 - 18.00. 
+                                Sunday Closed
+                              </span>
+                              <div class="clearfix"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="copyright text-light mb-4 text-center">
+            <p>&copy; 2016 - 2017 FinSult. With Love by <a href="#" class="text-light mb-4">DixiPixi</a></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+  </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+<link rel="icon" href="{% static 'static/img/favicon.ico' %}">
+<script src="{% static 'static/js/jquery-3.7.0.js' %}"></script>
+<script src="{% static 'static/js/js' %}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script type="module" src="{% static 'js.js' %}"></script>
+<script>
+    let bars = document.querySelector('.bar')
+    let menus = document.querySelector('.menu-bg')
+    // bars.style.display = 'block';
+    bars.addEventListener("click", e =>{
+        console.log("me")
+
+        if(menus.style.display === "none"){
+            menus.style.display = "block";
+            console.log("me")
+        }
+        else{
+            menus.style.display = "none";
+        }
+    })
+</script>
+
+</html>
