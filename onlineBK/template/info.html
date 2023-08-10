@@ -79,7 +79,7 @@
 
     <div class="container">
       {% if receiver %}
-        {% for receiver in receiver %}
+      
             <div class="col-md-12 bg-primary primary">
                 <div class="col-md-6">
                     <div class="col-md-12 border">
@@ -106,7 +106,15 @@
                     </div>
                 </div>
              </div>
-        {% endfor %}
+             <form action="{% url 'send-funds' %}" method="post">
+              <input type="text" name="search" hidden value={{receiver.account}}>
+    
+              <input type="text" name="amount" hidden value={{amount}}>
+    
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary">Fund Transfer</button>
+            </form>
+        
         {% else %}
             <div class="col-md-12 goods">
                 <div>
@@ -116,7 +124,8 @@
                 </div>
             </div>
         {% endif %}
-      <h2>Fund Transfer</h2>
+    
+      
     </div>
   </body>
 </html>
